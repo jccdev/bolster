@@ -1,0 +1,21 @@
+{
+  "name": "bolster",
+  "version": "1.0.0",
+  "description": "Bolster Interview",
+  "main": "index.js",
+  "repository": "git@github.com:jccdev/bolster.git",
+  "author": "jccdev <jcastillodev@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^16",
+    "mocha": "^10.0.0",
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "fastify": "^4.6.0",
+    "knex": "^2.3.0",
+    "pg": "^8.8.0"
+  }
+}
