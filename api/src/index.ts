@@ -1,10 +1,13 @@
 import _fastify from 'fastify';
+import {registerScanRoutes} from "./routes/scanRoutes";
 
 const fastify = _fastify({ logger: true });
 
 fastify.get('/', async (request, reply) => {
     reply.send('Welcome!');
 });
+
+registerScanRoutes(fastify);
 
 (async function () {
     try {
