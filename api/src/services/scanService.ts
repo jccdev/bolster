@@ -25,8 +25,15 @@ export class ScanService {
     const redirectChain = httpRes.request().redirectChain();
     const destination_url = redirectChain.at(-1)?.url() ?? url;
 
-    // ssl info
+    // naive natural language
+    const naturalLanguageContent = await page.$eval(
+      '*',
+      (el) => (el as any).innerText
+    );
 
+    // todo setup ASN info
+
+    // ssl info
     const securityDetails = await httpRes.securityDetails();
     const sslInfo: SslInfo = {
       issuer: securityDetails.issuer(),
@@ -43,10 +50,11 @@ export class ScanService {
     const dbRes = await this.scanQueries.insert({
       source_url: url,
       destination_url: destination_url,
-      snapshot: snapshot.toString('base64'),
+      snapshot: snapshot.toString('base64'), // todo store in S3
       ip_address: httpRes.remoteAddress()?.ip,
       ssl_info: JSON.stringify(sslInfo),
-      html_content: htmlContent,
+      html_content: htmlContent, // todo store in S3
+      natural_language_content: naturalLanguageContent, // todo store in S3
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
       deleted: false,

@@ -4,8 +4,9 @@ export interface ScanDb {
   destination_url: string;
   snapshot: string;
   ip_address: string;
-  ssl_info: string;
+  ssl_info: string; //jsonb
   html_content: string;
+  natural_language_content: string;
   created_at: string;
   updated_at: string;
   deleted: boolean;
